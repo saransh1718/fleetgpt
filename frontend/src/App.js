@@ -1,55 +1,72 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
+import React from "react";
+import "@/index.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Toaster } from "sonner";
+import { AuthProvider, useAuth } from "@/context/AuthContext";
+import Landing from "@/pages/Landing";
+import Login from "@/pages/Login";
+import Signup from "@/pages/Signup";
+import Layout from "@/components/Layout";
+import Dashboard from "@/pages/Dashboard";
+import Trucks from "@/pages/Trucks";
+import Drivers from "@/pages/Drivers";
+import Trips from "@/pages/Trips";
+import Fuel from "@/pages/Fuel";
+import Maintenance from "@/pages/Maintenance";
+import Contracts from "@/pages/Contracts";
+import Staff from "@/pages/Staff";
+import Fastag from "@/pages/Fastag";
+import Accounting from "@/pages/Accounting";
+import Compliance from "@/pages/Compliance";
+import Invoices from "@/pages/Invoices";
+import Customers from "@/pages/Customers";
+import AIInsights from "@/pages/AIInsights";
+import Settings from "@/pages/Settings";
+import PublicTracking from "@/pages/PublicTracking";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+function Protected({ children }) {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="min-h-screen grid place-items-center text-sm text-muted-foreground">Loading…</div>;
+  if (!user) return <Navigate to="/login" replace />;
+  return children;
+}
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
+function App() {
+  React.useEffect(() => {
+    if (localStorage.getItem("yfa_theme") !== "light") {
+      document.documentElement.classList.add("dark");
     }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
   }, []);
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
+        <Toaster theme="dark" position="top-right" richColors />
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/track/:lr" element={<PublicTracking />} />
+          <Route path="/app" element={<Protected><Layout /></Protected>}>
+            <Route index element={<Dashboard />} />
+            <Route path="trucks" element={<Trucks />} />
+            <Route path="drivers" element={<Drivers />} />
+            <Route path="trips" element={<Trips />} />
+            <Route path="fuel" element={<Fuel />} />
+            <Route path="maintenance" element={<Maintenance />} />
+            <Route path="contracts" element={<Contracts />} />
+            <Route path="staff" element={<Staff />} />
+            <Route path="fastag" element={<Fastag />} />
+            <Route path="accounting" element={<Accounting />} />
+            <Route path="compliance" element={<Compliance />} />
+            <Route path="invoices" element={<Invoices />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="insights" element={<AIInsights />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </div>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
