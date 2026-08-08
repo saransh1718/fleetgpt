@@ -27,7 +27,7 @@ export default function Settings() {
 
   return (
     <div>
-      <PageHeader title="Settings" subtitle="Company profile, team, subscription." testId="settings-header" />
+      <PageHeader title="Settings" subtitle="Company profile and team." testId="settings-header" />
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="border border-border bg-card rounded-md p-6">
           <div className="text-[11px] font-mono-tab text-primary uppercase tracking-widest">Workspace</div>
@@ -35,8 +35,8 @@ export default function Settings() {
             <div><span className="text-muted-foreground">Company:</span> {company?.name}</div>
             <div><span className="text-muted-foreground">GSTIN:</span> <span className="font-mono-tab">{company?.gstin || "—"}</span></div>
             <div><span className="text-muted-foreground">Address:</span> {company?.address || "—"}</div>
-            <div><span className="text-muted-foreground">Plan:</span> <Badge variant="outline" className="uppercase text-primary border-primary/30">{company?.plan}</Badge></div>
-            <div><span className="text-muted-foreground">Trial ends:</span> <span className="font-mono-tab">{company?.trial_ends_at?.slice(0, 10)}</span></div>
+            <div><span className="text-muted-foreground">Phone:</span> <span className="font-mono-tab">{company?.phone || "—"}</span></div>
+            <div><span className="text-muted-foreground">Signed in as:</span> {user?.name} · <Badge variant="outline" className="uppercase text-[10px] ml-1">{user?.role}</Badge></div>
           </div>
         </div>
 
@@ -54,17 +54,6 @@ export default function Settings() {
                 </div>
                 <Badge variant="outline" className="uppercase text-[10px]">{t.role}</Badge>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="border border-dashed border-primary/40 bg-primary/5 rounded-md p-6 lg:col-span-2">
-          <div className="text-[11px] font-mono-tab text-primary uppercase tracking-widest">Subscription (mocked)</div>
-          <div className="font-display font-bold text-2xl mt-2">You're on {company?.plan?.toUpperCase()} plan.</div>
-          <p className="text-sm text-muted-foreground mt-1">Payments are disabled in this build. When you're ready to go live, connect Razorpay or Stripe to unlock billing.</p>
-          <div className="mt-4 flex gap-2 flex-wrap">
-            {["starter", "growth", "pro"].map(p => (
-              <Button key={p} variant="outline" size="sm" data-testid={`plan-${p}-btn`}>Switch to {p}</Button>
             ))}
           </div>
         </div>

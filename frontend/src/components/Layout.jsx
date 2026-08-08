@@ -21,10 +21,10 @@ const NAV = [
   { to: "/app/staff", label: "Staff", icon: UserCog },
   { to: "/app/fastag", label: "FASTag", icon: CreditCard },
   { to: "/app/accounting", label: "Accounting", icon: Calculator },
-  { to: "/app/compliance", label: "Compliance", icon: ShieldCheck, badge: "Growth" },
-  { to: "/app/invoices", label: "Invoices", icon: Receipt, badge: "Growth" },
+  { to: "/app/compliance", label: "Compliance", icon: ShieldCheck },
+  { to: "/app/invoices", label: "Invoices", icon: Receipt },
   { to: "/app/customers", label: "Customers", icon: Building2 },
-  { to: "/app/insights", label: "AI Insights", icon: Sparkles, badge: "Pro" },
+  { to: "/app/insights", label: "AI Insights", icon: Sparkles },
   { to: "/app/settings", label: "Settings", icon: Settings },
 ];
 
@@ -99,7 +99,7 @@ export default function Layout() {
           <button className="lg:hidden" onClick={() => setOpen(true)} data-testid="sidebar-open"><Menu className="w-5 h-5" /></button>
           <div className="flex-1">
             <div className="text-xs text-muted-foreground font-mono-tab uppercase tracking-widest">Workspace</div>
-            <div className="text-sm font-medium">{company?.name} · <span className="text-primary uppercase">{company?.plan}</span></div>
+            <div className="text-sm font-medium">{company?.name}</div>
           </div>
           <Button variant="ghost" size="icon" onClick={() => setDark(!dark)} data-testid="theme-toggle">
             {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}

@@ -104,14 +104,14 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Low FASTag + upsell */}
-      <div className="grid lg:grid-cols-2 gap-4 mt-6">
+      {/* Low FASTag */}
+      <div className="mt-6">
         <div className="border border-border bg-card rounded-md p-6">
           <div className="text-[11px] font-mono-tab text-muted-foreground uppercase tracking-widest">Low FASTag balances</div>
           {s.low_fastag_trucks.length === 0 ? (
             <div className="text-sm text-muted-foreground py-4">All balances healthy.</div>
           ) : (
-            <div className="mt-3 space-y-2">
+            <div className="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {s.low_fastag_trucks.map(t => (
                 <div key={t.truck_id} className="flex items-center justify-between border border-border rounded-sm p-2" data-testid={`low-fastag-${t.truck_id}`}>
                   <span className="font-mono-tab text-sm">{t.truck_id.slice(0, 8)}</span>
@@ -120,15 +120,6 @@ export default function Dashboard() {
               ))}
             </div>
           )}
-        </div>
-        <div className="border border-dashed border-primary/40 bg-primary/5 rounded-md p-6 relative overflow-hidden">
-          <div className="absolute inset-0 stripe-lines opacity-20" />
-          <div className="relative">
-            <Sparkles className="w-6 h-6 text-primary" />
-            <div className="mt-3 font-display font-bold text-lg">Turn on AI insights.</div>
-            <p className="text-sm text-muted-foreground mt-1">Automatically spot fuel theft, rank truck profitability, and get a weekly AI-written business summary.</p>
-            <Link to="/app/insights"><Button className="mt-4" data-testid="dashboard-upsell-pro-btn">Explore AI Insights</Button></Link>
-          </div>
         </div>
       </div>
     </div>

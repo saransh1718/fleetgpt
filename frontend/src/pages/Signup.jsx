@@ -14,7 +14,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const submit = async (e) => {
     e.preventDefault(); setLoading(true);
-    try { await signup(f); toast.success("Trial started · 14 days"); nav("/app"); }
+    try { await signup(f); toast.success("Workspace created"); nav("/app"); }
     catch (err) { toast.error(err?.response?.data?.detail || "Signup failed"); }
     setLoading(false);
   };
@@ -29,7 +29,7 @@ export default function Signup() {
           </Link>
           <div className="space-y-3">
             <div className="text-[11px] font-mono-tab text-primary uppercase tracking-widest">// what you get</div>
-            {["14-day free trial · no card","All modules unlocked in trial","Bulk import your existing data","Cancel anytime"].map(t => (
+            {["All 15 modules unlocked","Multi-user team workspace","AI insights built-in","Public shipment tracking pages"].map(t => (
               <div key={t} className="text-sm text-foreground/90 border-l-2 border-primary pl-3">{t}</div>
             ))}
           </div>
@@ -38,7 +38,7 @@ export default function Signup() {
       <div className="flex items-center justify-center p-8">
         <form onSubmit={submit} className="w-full max-w-sm space-y-4" data-testid="signup-form">
           <div>
-            <div className="text-[11px] font-mono-tab text-primary uppercase tracking-widest">/ start free trial</div>
+            <div className="text-[11px] font-mono-tab text-primary uppercase tracking-widest">/ create workspace</div>
             <h1 className="font-display font-bold text-3xl tracking-tight mt-1">Spin up your workspace.</h1>
           </div>
           <div>
@@ -58,7 +58,7 @@ export default function Signup() {
             <Input type="password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} required minLength={6} data-testid="signup-password-input" />
           </div>
           <Button type="submit" className="w-full" disabled={loading} data-testid="signup-submit-btn">
-            {loading ? "Creating…" : "Start free trial"}
+            {loading ? "Creating…" : "Create workspace"}
           </Button>
           <div className="text-sm text-center text-muted-foreground">
             Already have an account? <Link to="/login" className="text-primary hover:underline" data-testid="signup-login-link">Sign in</Link>

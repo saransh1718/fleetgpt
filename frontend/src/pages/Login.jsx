@@ -54,7 +54,7 @@ export default function Login() {
             {loading ? "Signing in…" : "Sign in"}
           </Button>
           <div className="text-sm text-center text-muted-foreground">
-            New to YourFleetAI? <Link to="/signup" className="text-primary hover:underline" data-testid="login-signup-link">Start free trial</Link>
+            New to YourFleetAI? <Link to="/signup" className="text-primary hover:underline" data-testid="login-signup-link">Create a workspace</Link>
           </div>
         </form>
       </div>

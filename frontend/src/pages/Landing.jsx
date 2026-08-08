@@ -10,13 +10,6 @@ const FEATURES = [
   { icon: Sparkles, title: "AI Insights", desc: "Truck profitability leaderboard, fuel theft detection, monthly AI-written business summary." },
 ];
 
-const PRICING = [
-  { name: "Starter", price: "₹299", per: "/truck/mo", features: ["10 core modules", "Bulk CSV import", "Search + inline edit", "1 user"], cta: "Start free" },
-  { name: "Growth", price: "₹699", per: "/truck/mo", features: ["Everything in Starter", "Compliance Vault", "Digital LR / Bilty", "GST Invoicing", "WhatsApp alerts", "5 users"], cta: "Start 14-day trial", popular: true },
-  { name: "Pro", price: "₹1,299", per: "/truck/mo", features: ["Everything in Growth", "AI Insights", "Predictive maintenance", "E-way bill", "Tally exports", "Unlimited users"], cta: "Start free" },
-  { name: "Enterprise", price: "Custom", per: "", features: ["Everything in Pro", "SSO + audit logs", "Real-time GPS bundle", "Dedicated support"], cta: "Talk to sales" },
-];
-
 export default function Landing() {
   const nav = useNavigate();
   return (
@@ -31,12 +24,11 @@ export default function Landing() {
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#features" className="hover:text-foreground transition-colors">Features</a>
-            <a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a>
             <a href="#track" className="hover:text-foreground transition-colors">Track Shipment</a>
           </nav>
           <div className="flex items-center gap-2">
             <Button variant="ghost" onClick={() => nav("/login")} data-testid="landing-login-btn">Sign in</Button>
-            <Button onClick={() => nav("/signup")} data-testid="landing-signup-btn">Start free trial</Button>
+            <Button onClick={() => nav("/signup")} data-testid="landing-signup-btn">Sign up</Button>
           </div>
         </div>
       </header>
@@ -60,16 +52,16 @@ export default function Landing() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <Button size="lg" onClick={() => nav("/signup")} data-testid="hero-signup-btn" className="text-base">
-                Start 14-day free trial <ArrowRight className="w-4 h-4 ml-2" />
+                Create your workspace <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <Button size="lg" variant="outline" onClick={() => nav("/login")} data-testid="hero-demo-btn" className="text-base">
                 Try demo (demo@yourfleetai.com)
               </Button>
             </div>
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground font-mono-tab uppercase tracking-widest">
-              <div className="flex items-center gap-1.5"><Check className="w-3 h-3 text-primary" /> No credit card</div>
               <div className="flex items-center gap-1.5"><Check className="w-3 h-3 text-primary" /> GST invoicing day 1</div>
-              <div className="flex items-center gap-1.5"><Check className="w-3 h-3 text-primary" /> Cancel anytime</div>
+              <div className="flex items-center gap-1.5"><Check className="w-3 h-3 text-primary" /> Multi-user workspaces</div>
+              <div className="flex items-center gap-1.5"><Check className="w-3 h-3 text-primary" /> AI insights built-in</div>
             </div>
           </div>
           <div className="lg:col-span-5">
@@ -109,38 +101,6 @@ export default function Landing() {
                 <f.icon className="w-6 h-6 text-primary mb-4" />
                 <div className="font-display font-semibold text-lg">{f.title}</div>
                 <p className="text-sm text-muted-foreground mt-2">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section id="pricing" className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20">
-          <div className="text-[11px] font-mono-tab text-primary uppercase tracking-widest">/ pricing</div>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold tracking-tight mt-2">Per-truck, per-month. No lock-in.</h2>
-          <p className="text-muted-foreground mt-2">Annual billing = 2 months free.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-            {PRICING.map((p) => (
-              <div key={p.name} className={`relative border rounded-md p-6 bg-card ${p.popular ? "border-primary shadow-[0_0_0_1px_hsl(var(--primary))]" : "border-border"}`}>
-                {p.popular && <div className="absolute -top-3 left-6 bg-primary text-primary-foreground text-[10px] font-mono-tab uppercase tracking-widest px-2 py-1 rounded-sm">Most popular</div>}
-                <div className="font-display font-bold text-xl">{p.name}</div>
-                <div className="mt-3 flex items-baseline gap-1">
-                  <span className="text-4xl font-mono-tab font-bold">{p.price}</span>
-                  <span className="text-sm text-muted-foreground">{p.per}</span>
-                </div>
-                <ul className="mt-5 space-y-2">
-                  {p.features.map((x) => <li key={x} className="text-sm flex gap-2"><Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" /> {x}</li>)}
-                </ul>
-                <Button
-                  className="w-full mt-6"
-                  variant={p.popular ? "default" : "outline"}
-                  onClick={() => nav("/signup")}
-                  data-testid={`pricing-${p.name.toLowerCase()}-cta`}
-                >
-                  {p.cta}
-                </Button>
               </div>
             ))}
           </div>
