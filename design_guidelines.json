@@ -1,0 +1,131 @@
+{
+  "theme_strategy": {
+    "primary_mode": "dark",
+    "secondary_mode": "light",
+    "color_archetype": "The Performance Pro + Industrial Edge",
+    "rationale": "High-visibility tactical look suitable for outdoor Indian transport fleets and intense data management, paired with Indian logistics vibrancy (orange/yellow). Avoids standard SaaS blues."
+  },
+  "css_variables": "@layer base {\n  :root {\n    --background: 210 20% 98%;\n    --foreground: 240 10% 4%;\n    --card: 0 0% 100%;\n    --card-foreground: 240 10% 4%;\n    --popover: 0 0% 100%;\n    --popover-foreground: 240 10% 4%;\n    --primary: 22 100% 50%;\n    --primary-foreground: 0 0% 100%;\n    --secondary: 46 100% 50%;\n    --secondary-foreground: 240 10% 4%;\n    --muted: 240 5% 96%;\n    --muted-foreground: 240 4% 46%;\n    --accent: 22 100% 50%;\n    --accent-foreground: 0 0% 100%;\n    --destructive: 0 84% 60%;\n    --destructive-foreground: 0 0% 100%;\n    --border: 240 6% 90%;\n    --input: 240 6% 90%;\n    --ring: 22 100% 50%;\n    --radius: 0.25rem;\n  }\n\n  .dark {\n    --background: 240 10% 4%;\n    --foreground: 0 0% 100%;\n    --card: 240 5% 9%;\n    --card-foreground: 0 0% 100%;\n    --popover: 240 5% 9%;\n    --popover-foreground: 0 0% 100%;\n    --primary: 22 100% 50%;\n    --primary-foreground: 0 0% 100%;\n    --secondary: 46 100% 50%;\n    --secondary-foreground: 240 10% 4%;\n    --muted: 240 5% 15%;\n    --muted-foreground: 240 5% 65%;\n    --accent: 22 100% 50%;\n    --accent-foreground: 0 0% 100%;\n    --destructive: 0 62% 30%;\n    --destructive-foreground: 0 0% 100%;\n    --border: 240 4% 17%;\n    --input: 240 4% 17%;\n    --ring: 22 100% 50%;\n  }\n}",
+  "typography": {
+    "headings": {
+      "family": "Cabinet Grotesk, sans-serif",
+      "usage": "Marketing H1-H6, Dashboard Widget Titles",
+      "weights": ["500", "700", "900"],
+      "letter_spacing": "tracking-tight"
+    },
+    "body": {
+      "family": "IBM Plex Sans, sans-serif",
+      "usage": "General UI, descriptions, tables",
+      "weights": ["400", "500"]
+    },
+    "numbers": {
+      "family": "JetBrains Mono, monospace",
+      "usage": "KPIs, P&L amounts, Invoice numbers, FASTag balances"
+    }
+  },
+  "spacing_scale": {
+    "base": "Generous Spacing Philosophy",
+    "widget_padding": "p-6",
+    "section_gap": "gap-8 md:gap-12",
+    "container_padding": "px-8 md:px-12",
+    "table_cell": "py-3 px-4"
+  },
+  "component_patterns": {
+    "sidebar_nav": {
+      "surface": "Solid background bg-card, border-r border-border",
+      "active_state": "border-l-4 border-primary bg-gradient-to-r from-primary/10 to-transparent",
+      "text_alignment": "Left-aligned with lucide-react icons",
+      "layout": "Always visible on desktop, mobile behind hamburger menu"
+    },
+    "cards": {
+      "style": "Tactical Minimalism. Flat surface bg-card, 1px solid border-border, no soft shadows in dark mode.",
+      "radius": "rounded-sm or rounded-md",
+      "hover": "transform -translate-y-1 shadow-[0_8px_30px_rgba(255,90,0,0.1)] transition-transform"
+    },
+    "kpi_tiles": {
+      "layout": "Bento Grid Mode B (High Density). col-span-1 for summary, col-span-2 for charts.",
+      "typography": "JetBrains Mono for the main metric, Cabinet Grotesk for the title."
+    },
+    "empty_states_upsell": {
+      "alignment": "Center-aligned (exception to the rule for focus)",
+      "visual": "Subtle ASCII or line-art illustration, NO AI emojis",
+      "cta": "Pill-shaped button or sharp button in secondary color (yellow) for high contrast. Text: 'Upgrade to [Plan]'",
+      "border": "Dashed border-border to indicate 'missing space'"
+    },
+    "compliance_vault": {
+      "valid": "border-l-4 border-green-500",
+      "expiring": "border-l-4 border-yellow-500 bg-yellow-500/5",
+      "expired": "border-l-4 border-red-500 bg-red-500/10"
+    },
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm (sharp edges)",
+      "secondary": "border border-border hover:border-secondary hover:text-secondary"
+    }
+  },
+  "charts_recharts": {
+    "style": "Area and Bar charts",
+    "grid_lines": "stroke-border stroke-dasharray='3 3'",
+    "primary_gradient": "stop-color: hsl(var(--primary)) to transparent",
+    "tooltip": "bg-card border border-border text-foreground rounded-md p-3 shadow-lg",
+    "font": "IBM Plex Sans for axes, JetBrains Mono for values"
+  },
+  "layouts": {
+    "landing_page": {
+      "hero": {
+        "layout": "Left-aligned content, max-w-2xl. High-contrast background image with overlay.",
+        "overlay": "bg-black/60 to ensure text readability. NEVER fully transparent.",
+        "typography": "H1 text-5xl sm:text-6xl tracking-tighter font-black"
+      },
+      "features": {
+        "grid": "The 'Tetris' Grid (Mode A). col-span-full md:col-span-8 row-span-2 for Hero feature, col-span-4 for supporting features."
+      },
+      "pricing": {
+        "layout": "4 columns. Enterprise/Pro highlighted.",
+        "highlight": "The 'Tracing Beam' effect for Pro plan card."
+      }
+    },
+    "dashboard": {
+      "grid": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+      "hierarchy": "Top row: KPIs. Middle row: AI Insights & Revenue charts. Bottom: Actionable tables (Expiring compliance, Low FASTag)."
+    }
+  },
+  "motion": {
+    "hover_states": "Required on all interactive elements. Buttons, cards, table rows.",
+    "transitions": "Specific properties only (e.g., transition-colors, transition-transform 0.2s ease). NEVER use transition-all.",
+    "page_load": "Staggered fade-up for dashboard widgets and list items."
+  },
+  "accessibility": {
+    "contrast": "Ensure minimum 4.5:1 for normal text, 3:1 for large text.",
+    "focus": "focus:ring-2 focus:ring-primary focus:outline-none",
+    "testing": "All interactive elements MUST include data-testid attribute"
+  },
+  "media": {
+    "image_urls": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1771182253516-ffc7c1bee56e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwzfHx0cnVja2luZyUyMGhpZ2h3YXklMjBzdW5zZXR8ZW58MHx8fHwxNzg2MjI3MDE5fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Trucking on highway at sunset. Perfect for hero background."
+      },
+      "feature_fleet": {
+        "url": "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzl8MHwxfHNlYXJjaHwyfHx0cnVjayUyMGZsZWV0JTIwbG9naXN0aWNzfGVufDB8fHx8MTc4NjIyNzAxOXww&ixlib=rb-4.1.0&q=85",
+        "description": "Parked trucks fleet. Good for Fleet management feature section."
+      },
+      "feature_logistics": {
+        "url": "https://images.unsplash.com/photo-1695222833131-54ee679ae8e5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwyfHxmbGVldCUyMG1hbmFnZXIlMjBsb2dpc3RpY3N8ZW58MHx8fHwxNzg2MjI3MDIwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "White semi truck driving down rural road. Good for trip tracking."
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "Prioritize using pre-existing components from src/components/ui.",
+    "DO NOT apply universal transition (transition: all). Use specific properties.",
+    "DO NOT center align the app container. Text must flow naturally.",
+    "Use lucide-react for standard icons.",
+    "Cards and sections must not use generic soft shadows in dark mode. Rely on 1px borders for definition.",
+    "Add 'data-testid' to all buttons, links, and forms.",
+    "Use sonner for toast notifications.",
+    "Empty states must have a clear visual hierarchy ending in a primary color upsell button.",
+    "Ensure the sidebar is always visible on desktop and use standard navigation structures.",
+    "Only use Javascript (.js/.jsx) for components as no typescript setup is there."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": "Avoid generic layouts. Create depth through layered design elements with z-index hierarchy. Ensure focus states are clear and use high contrast. Do not use AI emoji characters for icons. Provide rich micro-interactions on hover and click. Do not use completely transparent backgrounds where text is overlayed. Always use text left alignment except for specific centered marketing elements."
+}
