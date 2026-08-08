@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Plus } from "lucide-react";
@@ -72,7 +72,7 @@ export default function Settings() {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
-          <DialogHeader><DialogTitle>Invite team member</DialogTitle></DialogHeader>
+          <DialogHeader><DialogTitle>Invite team member</DialogTitle><DialogDescription>They'll be able to sign in with the temp password you set here.</DialogDescription></DialogHeader>
           <div className="space-y-3">
             <div><Label className="text-xs">Name</Label><Input value={f.name || ""} onChange={(e) => setF({ ...f, name: e.target.value })} data-testid="invite-name-input" /></div>
             <div><Label className="text-xs">Email</Label><Input type="email" value={f.email || ""} onChange={(e) => setF({ ...f, email: e.target.value })} data-testid="invite-email-input" /></div>

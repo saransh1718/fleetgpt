@@ -460,7 +460,7 @@ async def accounting_month(month: str, u: dict = Depends(get_current_user)):
     other_exp_total = sum(float(o.get("amount", 0)) for o in other_exp)
 
     total_income = trip_rev + contract_rev + other_income_total
-    total_expense = fuel_cost + maint_cost + toll_cost + driver_sal + staff_sal + other_exp_total
+    total_expense = fuel_cost + maint_cost + toll_cost + driver_sal + staff_sal + contract_inv + other_exp_total
     return {
         "month": month,
         "income": {
